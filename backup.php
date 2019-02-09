@@ -1,4 +1,3 @@
-#!/usr/bin/php
 <?php
 // #########################################
 // qs-backupper by 久鶻堂 <dev@q.kostu.do>
