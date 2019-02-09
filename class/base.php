@@ -19,7 +19,8 @@ class QSBackUpperBase {
 			echo "{$objVal}\n";
 			return true;
 		} else {
-			return true;
+			exec( $objVal, $arrResult, $flgResult );
+			return ( $flgResult === 0 );
 		}
 	}
 }

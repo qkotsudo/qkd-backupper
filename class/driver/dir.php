@@ -14,6 +14,7 @@ class QSBackUpperDriverDir extends QSBackUpperDriverBase {
 	}
 
 	public function drive() {
+		// 汎用判定
 		if ( !parent::drive() ) {
 			return false;
 		}
@@ -24,7 +25,8 @@ class QSBackUpperDriverDir extends QSBackUpperDriverBase {
 			return false;
 
 		}
-		$strCmd	= "rsync -avz -e 'ssh -p {$this->getSSHPort()} -i {$this->getSSHUser()}@{$this->getSSHHost()} -i {$this->getSSHKey(true)}' {$this->strSrc}/ {$this->getDst()}/";
+
+		$strCmd	= "rsync -avz -e 'ssh -p {$this->getSSHPort()} -i {$this->getSSHKey(true)}' {$this->getSSHUser()}@{$this->getSSHHost()}:{$this->strSrc}/ {$this->getDst()}/";
 		return $this->cmd( $strCmd );
 	}
 }
