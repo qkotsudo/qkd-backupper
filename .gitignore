@@ -1,3 +1,4 @@
 key/*
 profile/*
 !profile/sample.profile.php
+!key
