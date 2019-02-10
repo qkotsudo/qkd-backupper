@@ -121,6 +121,7 @@ if ( count( $arrProfile ) == 0 ) {
 // #######################
 // 処理系
 // #######################
+ini_set( "max_execution_time", 0 );
 foreach ( $arrProfile as $objProfile ) {
 	if ( $strProfile == "" || $strProfile == $objProfile->getName() ) {
 		if ( $flgDebug ) {
