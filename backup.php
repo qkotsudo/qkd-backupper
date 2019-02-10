@@ -119,21 +119,12 @@ if ( count( $arrProfile ) == 0 ) {
 // #######################
 // 処理系
 // #######################
-$flgOK	= true;
 foreach ( $arrProfile as $objProfile ) {
-	if ( $flgOK && $strProfile == "" || $strProfile == $objProfile->getName() ) {
+	if ( $strProfile == "" || $strProfile == $objProfile->getName() ) {
 		if ( $flgDebug ) {
 			$objProfile->setDebug( true );
 		}
-		$flgOK	= $objProfile->drive();
+		$objProfile->drive();
 	}
-}
-
-if ( $flgOK ) {
-	echo "done.\n";
-	exit;
-
-} else {
-	die( "Unknown error\n" );
 }
 ?>

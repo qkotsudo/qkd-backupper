@@ -15,7 +15,7 @@ $objProfile->addTargetDir( "main" )
 				->setSSHHost( "192.168.254.101" )
 				// ssh接続のユーザ名
 				->setSSHUser( "root" )
-				// ssh接続で使用する鍵ファイル名、このファイル名をkeyディレクトリから探して使う
+				// ssh接続で使用するキーペアの秘密鍵のファイル名、このファイル名をkeyディレクトリから探して使う
 				->setSSHKey( "backupper.pem" )
 				// rsyncバックアップしたいデータがあるリモートディレクトリ
 				->setSrc( "/var/www/html" )
@@ -28,7 +28,7 @@ $objProfile->addTargetDB( "main" )
 				->setSSHHost( "192.168.254.101" )
 				// ssh接続のユーザ名
 				->setSSHUser( "root" )
-				// ssh接続で使用する鍵ファイル名、このファイル名をkeyディレクトリから探して使う
+				// ssh接続で使用するキーペアの秘密鍵のファイル名、このファイル名をkeyディレクトリから探して使う
 				->setSSHKey( "backupper.pem" )
 				// mysqldumpの接続先ホスト
 				->setDBHost( "localhost" )

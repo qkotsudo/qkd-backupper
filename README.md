@@ -7,8 +7,8 @@
   
 # 使い方
 ① サーバ上で git clone https://github.com/qkotsudo/qs-backupper.git  
-② ssh-keygen -t rsa で keys に専用の鍵を作る  
-③ 専用の鍵をクライアントの対象ユーザの .ssh/authorized_keys に追記  
+② ssh-keygen -t rsa で keys ディレクトリ内に専用のキーペアを作る  
+③ 専用キーペアの公開鍵をクライアントの対象ユーザの .ssh/authorized_keys に追記  
 ④ profile/sample.profile.php を複製&編集してプロファイル用意  
 ⑤ php backup.php を cron にでも仕込む  
 ⑥ 安心して寝る  

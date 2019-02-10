@@ -57,25 +57,37 @@ class QSBackUpperProfile extends QSBackUpperBase {
 	}
 
 	public function drive() {
-		$flgOK	= true;
-		foreach ( $this->arrTargetDir as $objTargetDir ) {
+		$strReportSubject	= "qs-backupper report : " . date( "Y-m-d" );
+		$strReportBody		= "The Profile {$this->strName} has been processed.\n\n";
+		$arrError				= array();
+
+		foreach ( $this->arrTargetDir as $strTargetName => $objTargetDir ) {
 			$objTargetDir->setDebug( $this->isDebug() );
-			if ( $flgOK ) {
-				$flgOK	= $objTargetDir->drive();
+			$strReportBody		.= "DIR : {$strTargetName} : ";
+			if ( $objTargetDir->drive() ) {
+				$strReportBody	.= "SUCCESS\n";
+			} else {
+				$strReportBody.=	"FAIL\n";
+				$arrError[]		= $strTargetName;
 			}
 		}
-		foreach ( $this->arrTargetDB as $objTargetDB ) {
+		foreach ( $this->arrTargetDB as $strTargetName => $objTargetDB ) {
 			$objTargetDB->setDebug( $this->isDebug() );
-			if ( $flgOK ) {
-				$flgOK	= $objTargetDB->drive();
+			$strReportBody		.= "DB : {$strTargetName} : ";
+			if ( $objTargetDB->drive() ) {
+				$strReportBody	.= "SUCCESS\n";
+			} else {
+				$strReportBody.=	"FAIL\n";
+				$arrError[]		= $strTargetName;
 			}
 		}
-		if ( $flgOK ) {
-			foreach ( $this->arrReportMail as $objReportMail ) {
-				$flgOK	= $objReportMail->drive();
-			}
+
+		foreach ( $this->arrReportMail as $objReportMail ) {
+			$objReportMail->setSubject( $strReportSubject )
+									->setBody( $strReportBody )
+									->drive();
 		}
-		return $flgOK;
+		return ( count( $arrError ) == 0 );
 	}
 }
 ?>
