@@ -61,6 +61,14 @@ class QKDBackUpperProfile extends QKDBackUpperBase {
 		$strReportBody		= "The Profile {$this->strName} has been processed.\n\n";
 		$arrError				= array();
 
+		if ( $this->isDebug() ) {
+			echo "##### PROFILE : {$this->strName} #####\n";
+		}
+
+		if ( $this->isDebug() ) {
+			echo "##### TARGET : DIR #####\n";
+		}
+
 		foreach ( $this->arrTargetDir as $strTargetName => $objTargetDir ) {
 			$objTargetDir->setDebug( $this->isDebug() );
 			$objTargetDir->setBaseDir( $this->getBaseDir() );
@@ -72,6 +80,11 @@ class QKDBackUpperProfile extends QKDBackUpperBase {
 				$arrError[]		= $strTargetName;
 			}
 		}
+
+		if ( $this->isDebug() ) {
+			echo "##### TARGET : DB #####\n";
+		}
+
 		foreach ( $this->arrTargetDB as $strTargetName => $objTargetDB ) {
 			$objTargetDB->setDebug( $this->isDebug() );
 			$objTargetDB->setBaseDir( $this->getBaseDir() );
@@ -84,15 +97,14 @@ class QKDBackUpperProfile extends QKDBackUpperBase {
 			}
 		}
 
-		if ( $this->isDebug() ) {
-			exit;
+		if ( !$this->isDebug() ) {
+			foreach ( $this->arrReportMail as $objReportMail ) {
+				$objReportMail->setSubject( $strReportSubject )
+										->setBody( $strReportBody )
+										->drive();
+			}
 		}
 
-		foreach ( $this->arrReportMail as $objReportMail ) {
-			$objReportMail->setSubject( $strReportSubject )
-									->setBody( $strReportBody )
-									->drive();
-		}
 		return ( count( $arrError ) == 0 );
 	}
 }
