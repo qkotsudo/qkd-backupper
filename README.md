@@ -1,4 +1,4 @@
-# qs-backupper
+# qkd-backupper
 コマンドライン実行によるシンプルなｐバックアップスクリプト  
 1台のサーバから複数台のクライアントに対してpullでバックアップできる  
 処理対象をプロファイル単位で管理可能  
@@ -6,7 +6,7 @@
 まだバリデーションとかチェック機能が全然足りてないアルファ版  
   
 # 使い方
-① サーバ上で git clone https://github.com/qkotsudo/qs-backupper.git  
+① サーバ上で git clone https://github.com/qkotsudo/qkd-backupper.git  
 ② ssh-keygen -t rsa で keys ディレクトリ内に専用のキーペアを作る  
 ③ 専用キーペアの公開鍵をクライアントの対象ユーザの .ssh/authorized_keys に追記  
 ④ profile/sample.profile.php を複製&編集してプロファイル用意  

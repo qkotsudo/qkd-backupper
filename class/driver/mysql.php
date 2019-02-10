@@ -1,5 +1,5 @@
 <?php
-class QSBackUpperDriverMySQL extends QSBackUpperDriverBase {
+class QKDBackUpperDriverMySQL extends QKDBackUpperDriverBase {
 	private	$strDBHost		= "localhost";
 	private	$intDBPort		= 3306;
 	private	$strDBUser		= "";
@@ -52,22 +52,22 @@ class QSBackUpperDriverMySQL extends QSBackUpperDriverBase {
 
 		// DBホスト未指定
 		if ( $this->strDBHost == "" ) {
-			echo "QSBackUpperDriverMySQL::strDBHost : Undefined.\n";
+			echo "QKDBackUpperDriverMySQL::strDBHost : Undefined.\n";
 			return false;
 
 		// DBユーザ未指定
 		} elseif ( $this->strDBUser == "" ) {
-			echo "QSBackUpperDriverMySQL::strDBUser : Undefined.\n";
+			echo "QKDBackUpperDriverMySQL::strDBUser : Undefined.\n";
 			return false;
 
 		// DBパスワード未指定
 		} elseif ( $this->strDBPass == "" ) {
-			echo "QSBackUpperDriverMySQL::strDBPass : Undefined.\n";
+			echo "QKDBackUpperDriverMySQL::strDBPass : Undefined.\n";
 			return false;
 
 		// DB名未指定
 		} elseif ( $this->strDBName == "" ) {
-			echo "QSBackUpperDriverMySQL::strDBName : Undefined.\n";
+			echo "QKDBackUpperDriverMySQL::strDBName : Undefined.\n";
 			return false;
 
 		}

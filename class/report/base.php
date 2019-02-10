@@ -1,4 +1,4 @@
 <?php
-class QSBackUpperReportBase extends QSBackUpperBase {
+class QKDBackUpperReportBase extends QKDBackUpperBase {
 }
 ?>

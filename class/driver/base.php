@@ -1,5 +1,5 @@
 <?php
-class QSBackUpperDriverBase extends QSBackUpperBase {
+class QKDBackUpperDriverBase extends QKDBackUpperBase {
 	private	$strSSHHost		= "";
 	public function setSSHHost( $objVal ) {
 		$this->strSSHHost		= $objVal;
@@ -58,7 +58,7 @@ class QSBackUpperDriverBase extends QSBackUpperBase {
 	public function drive() {
 		// 先ディレクトリ未指定
 		if ( $this->getDst() == "" ) {
-			echo "QSBackUpperDriverDir::strDst : Undefined.\n";
+			echo "QKDBackUpperDriverDir::strDst : Undefined.\n";
 			return false;
 
 		// 先ディレクトリ不在
@@ -78,7 +78,7 @@ class QSBackUpperDriverBase extends QSBackUpperBase {
 
 		// 鍵未指定
 		} elseif ( $this->getSSHKey() == "" ) {
-			echo "QSBackUpperDriverDir::strKey : Undefined.\n";
+			echo "QKDBackUpperDriverDir::strKey : Undefined.\n";
 			return false;
 
 		// 鍵不在

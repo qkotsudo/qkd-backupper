@@ -1,5 +1,5 @@
 <?php
-class QSBackUpperBase {
+class QKDBackUpperBase {
 	private	$flgDebug= false;
 	public function setDebug( $objVal ) {
 		$this->flgDebug			= $objVal;

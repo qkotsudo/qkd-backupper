@@ -1,11 +1,11 @@
 <?php
 // プロファイルオブジェクト生成、引数はプロファイル名
-$objProfile	= new QSBackUpperProfile( "www.example.com" );
+$objProfile	= new QKDBackUpperProfile( "www.example.com" );
 
 // レポート設定の追加、引数は任意の設定名
 $objProfile->addReportMail( "main" )
 				// レポートメールの送信元を設定、引数は Fromアドレス, From名
-				->setFrom( "backupper@example.com", "QS-BackUpper" )
+				->setFrom( "backupper@example.com", "qkd-backupper" )
 				// レポートメールの送信先を設定
 				->addTo( "report@example.com" );
 

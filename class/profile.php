@@ -1,5 +1,5 @@
 <?php
-class QSBackUpperProfile extends QSBackUpperBase {
+class QKDBackUpperProfile extends QKDBackUpperBase {
 	private	$strName			= "";
 	private	$arrTargetDir	= array();
 	private	$arrTargetDB	= array();
@@ -27,7 +27,7 @@ class QSBackUpperProfile extends QSBackUpperBase {
 
 	public function addReportMail( $objVal ) {
 		if ( !isset( $this->arrReportMail[ $objVal ] ) ) {
-			$this->arrReportMail[ $objVal ]	= new QSBackUpperReportMail();
+			$this->arrReportMail[ $objVal ]	= new QKDBackUpperReportMail();
 			return $this->arrReportMail[ $objVal ];
 		}
 		return false;
@@ -35,7 +35,7 @@ class QSBackUpperProfile extends QSBackUpperBase {
 
 	public function addTargetDir( $objVal ) {
 		if ( !isset( $this->arrTargetDir[ $objVal ] ) ) {
-			$this->arrTargetDir[ $objVal ]	= new QSBackUpperDriverDir();
+			$this->arrTargetDir[ $objVal ]	= new QKDBackUpperDriverDir();
 			return $this->arrTargetDir[ $objVal ];
 		}
 		return false;
@@ -43,7 +43,7 @@ class QSBackUpperProfile extends QSBackUpperBase {
 
 	public function addTargetDB( $objVal ) {
 		if ( !isset( $this->arrTargetDB[ $objVal ] ) ) {
-			$this->arrTargetDB[ $objVal ]	= new QSBackUpperDriverMySQL();
+			$this->arrTargetDB[ $objVal ]	= new QKDBackUpperDriverMySQL();
 			return $this->arrTargetDB[ $objVal ];
 		}
 		return false;
@@ -57,7 +57,7 @@ class QSBackUpperProfile extends QSBackUpperBase {
 	}
 
 	public function drive() {
-		$strReportSubject	= "qs-backupper report : " . date( "Y-m-d" );
+		$strReportSubject	= "qkd-backupper report : " . date( "Y-m-d" );
 		$strReportBody		= "The Profile {$this->strName} has been processed.\n\n";
 		$arrError				= array();
 

@@ -1,6 +1,6 @@
 <?php
 // #########################################
-// qs-backupper by 久鶻堂 <dev@q.kostu.do>
+// qkd-backupper by 久鶻堂 <dev@q.kostu.do>
 // ※ php 5.x でも動くように書いてる
 // #########################################
 
@@ -88,8 +88,8 @@ if ( $argc > 0 ) {
 
 		// バージョン出力
 		} elseif ( $strArg == "-v" || $strArg == "--version" ) {
-			echo "qs-backupper {$strVersion}, Copyright (C) 2019 qkotsudo\n";
-			echo "GitHub: https://github.com/qkotsudo/qs-backupper\n";
+			echo "qkd-backupper {$strVersion}, Copyright (C) 2019 qkotsudo\n";
+			echo "GitHub: https://github.com/qkotsudo/qkd-backupper\n";
 			exit;
 
 		// ヘルプモード判別

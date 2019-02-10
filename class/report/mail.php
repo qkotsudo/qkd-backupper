@@ -1,5 +1,5 @@
 <?php
-class QSBackUpperReportMail extends QSBackUpperReportBase {
+class QKDBackUpperReportMail extends QKDBackUpperReportBase {
 	private	$strFromName		= "";
 	private	$strFromAddress	= "";
 	private	$arrTo					= array();

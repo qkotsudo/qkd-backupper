@@ -1,5 +1,5 @@
 <?php
-class QSBackUpperDriverDir extends QSBackUpperDriverBase {
+class QKDBackUpperDriverDir extends QKDBackUpperDriverBase {
 	private	$strSrc			= "";
 	private	$arrIgnore		= array();
 
@@ -21,7 +21,7 @@ class QSBackUpperDriverDir extends QSBackUpperDriverBase {
 
 		// 元ディレクトリ未指定
 		if ( $this->strSrc == "" ) {
-			echo "QSBackUpperDriverDir::strSrc : Undefined.\n";
+			echo "QKDBackUpperDriverDir::strSrc : Undefined.\n";
 			return false;
 
 		}
