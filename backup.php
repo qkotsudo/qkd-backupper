@@ -27,23 +27,25 @@ $arrArg				= array();
 // #######################
 
 // classロード
-require_once( __DIR__ . "/class/base.php" );
-require_once( __DIR__ . "/class/profile.php" );
-require_once( __DIR__ . "/class/driver/base.php" );
-require_once( __DIR__ . "/class/driver/dir.php" );
-require_once( __DIR__ . "/class/driver/mysql.php" );
-require_once( __DIR__ . "/class/report/base.php" );
-require_once( __DIR__ . "/class/report/mail.php" );
+$strBaseDir	= __DIR__;
+ini_set( "include_path", ini_get( "include_path" ) . ":{$strBaseDir}/class" );
+require_once( "base.php" );
+require_once( "profile.php" );
+require_once( "driver/base.php" );
+require_once( "driver/dir.php" );
+require_once( "driver/mysql.php" );
+require_once( "report/base.php" );
+require_once( "report/mail.php" );
 
 // プロファイルロード
-if ( !( $objDir = opendir( __DIR__ . "/profile" ) ) ) {
+if ( !( $objDir = opendir( "{$strBaseDir}/profile" ) ) ) {
 	die( "cloud not open profile dir." );
 
 } else {
 	while ( $strProfile = readdir( $objDir ) ) {
 		// *.profile.php を include ( sample.profile.php は除外 )
 		if ( preg_match( "/^(.+)\.profile\.php$/", $strProfile ) && $strProfile != "sample.profile.php" ) {
-			include_once( __DIR__ . "/profile/{$strProfile}" );
+			include_once( "profile/{$strProfile}" );
 		}
 	}
 }
@@ -124,6 +126,7 @@ foreach ( $arrProfile as $objProfile ) {
 		if ( $flgDebug ) {
 			$objProfile->setDebug( true );
 		}
+		$objProfile->setBaseDir( $strBaseDir );
 		$objProfile->drive();
 	}
 }

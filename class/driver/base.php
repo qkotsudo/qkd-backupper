@@ -29,7 +29,7 @@ class QKDBackUpperDriverBase extends QKDBackUpperBase {
 	}
 
 	public function getSSHKey( $flgPath = false ) {
-		return ( $flgPath )? __DIR__ . "/../../key/{$this->strSSHKey}": $this->strSSHKey;
+		return ( $flgPath )? "{$this->getBaseDir()}/key/{$this->strSSHKey}": $this->strSSHKey;
 	}
 
 
@@ -83,7 +83,7 @@ class QKDBackUpperDriverBase extends QKDBackUpperBase {
 
 		// 鍵不在
 		} elseif ( !file_exists( $this->getSSHKey( true ) ) ) {
-			echo "{$this->getSSHKey()} : Not found.\n";
+			echo "{$this->getSSHKey( true )} : Not found.\n";
 			return false;
 
 		}

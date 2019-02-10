@@ -76,12 +76,17 @@ class QKDBackUpperDriverMySQL extends QKDBackUpperDriverBase {
 		$strFileKeep		= ( $this->flgMonthly )? date( "Ymt" ) . ".gz": "";
 		$strCmd			= "ssh -p {$this->getSSHPort()} -i {$this->getSSHKey(true)} {$this->getSSHUser()}@{$this->getSSHHost()} \"mysqldump -u{$this->strDBUser} -p'{$this->strDBPass}' -h{$this->strDBHost} -P{$this->intDBPort} {$this->strDBName} | gzip -c\" > {$this->getDst()}/{$strFileSave}" ;
 
-		if (
-			$this->cmd( $strCmd ) &&
-			file_exists( "{$this->getDst()}/{$strFileSave}" ) &&
-			filesize( "{$this->getDst()}/{$strFileSave}" ) > 0
-		) {
-			if ( $this->intDepth > 0 && file_exists( "{$this->getDst()}/{$strFileDelete}" ) && $strFileDelete != $strFileKeep ) {
+		if ( $this->cmd( $strCmd ) 	) {
+			if ( $this->isDebug() ) {
+				return true;
+			}
+			if (
+				file_exists( "{$this->getDst()}/{$strFileSave}" ) &&
+				filesize( "{$this->getDst()}/{$strFileSave}" ) > 0 &&
+				$this->intDepth > 0 &&
+				file_exists( "{$this->getDst()}/{$strFileDelete}" ) &&
+				$strFileDelete != $strFileKeep
+			) {
 				cmd( "rm -Rf {$this->getDst()}/{$strFileDelete}" );
 			}
 			return true;

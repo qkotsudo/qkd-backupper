@@ -63,6 +63,7 @@ class QKDBackUpperProfile extends QKDBackUpperBase {
 
 		foreach ( $this->arrTargetDir as $strTargetName => $objTargetDir ) {
 			$objTargetDir->setDebug( $this->isDebug() );
+			$objTargetDir->setBaseDir( $this->getBaseDir() );
 			$strReportBody		.= "DIR : {$strTargetName} : ";
 			if ( $objTargetDir->drive() ) {
 				$strReportBody	.= "SUCCESS\n";
@@ -73,6 +74,7 @@ class QKDBackUpperProfile extends QKDBackUpperBase {
 		}
 		foreach ( $this->arrTargetDB as $strTargetName => $objTargetDB ) {
 			$objTargetDB->setDebug( $this->isDebug() );
+			$objTargetDB->setBaseDir( $this->getBaseDir() );
 			$strReportBody		.= "DB : {$strTargetName} : ";
 			if ( $objTargetDB->drive() ) {
 				$strReportBody	.= "SUCCESS\n";
@@ -80,6 +82,10 @@ class QKDBackUpperProfile extends QKDBackUpperBase {
 				$strReportBody.=	"FAIL\n";
 				$arrError[]		= $strTargetName;
 			}
+		}
+
+		if ( $this->isDebug() ) {
+			exit;
 		}
 
 		foreach ( $this->arrReportMail as $objReportMail ) {
