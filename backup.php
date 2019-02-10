@@ -7,7 +7,7 @@
 // #######################
 // 設定系
 // #######################
-$strVersion		= "0.1a - 20190208";
+$strVersion		= "0.5a - 20190210";
 
 // デバッグフラグ
 $flgDebug			= false;
@@ -27,23 +27,23 @@ $arrArg				= array();
 // #######################
 
 // classロード
-require_once( "./class/base.php" );
-require_once( "./class/profile.php" );
-require_once( "./class/driver/base.php" );
-require_once( "./class/driver/dir.php" );
-require_once( "./class/driver/mysql.php" );
-require_once( "./class/report/base.php" );
-require_once( "./class/report/mail.php" );
+require_once( __DIR__ . "/class/base.php" );
+require_once( __DIR__ . "/class/profile.php" );
+require_once( __DIR__ . "/class/driver/base.php" );
+require_once( __DIR__ . "/class/driver/dir.php" );
+require_once( __DIR__ . "/class/driver/mysql.php" );
+require_once( __DIR__ . "/class/report/base.php" );
+require_once( __DIR__ . "/class/report/mail.php" );
 
 // プロファイルロード
-if ( !( $objDir = opendir( "./profile" ) ) ) {
+if ( !( $objDir = opendir( __DIR__ . "/profile" ) ) ) {
 	die( "cloud not open profile dir." );
 
 } else {
 	while ( $strProfile = readdir( $objDir ) ) {
 		// *.profile.php を include ( sample.profile.php は除外 )
 		if ( preg_match( "/^(.+)\.profile\.php$/", $strProfile ) && $strProfile != "sample.profile.php" ) {
-			include_once( "./profile/{$strProfile}" );
+			include_once( __DIR__ . "/profile/{$strProfile}" );
 		}
 	}
 }

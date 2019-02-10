@@ -71,9 +71,9 @@ class QKDBackUpperDriverMySQL extends QKDBackUpperDriverBase {
 			return false;
 
 		}
-		$strFileSave		= date( "Ymd" ) . ".zip";
-		$strFileDelete	= ( $this->intDepth > 0 )? date( "Ymd", mktime( 0,0,0, date( "m" ), date( "d" ) - $this->intDepth, date( "Y" ) ) ) . ".zip": "";
-		$strFileKeep		= ( $this->flgMonthly )? date( "Ymt" ) . ".zip": "";
+		$strFileSave		= date( "Ymd" ) . ".gz";
+		$strFileDelete	= ( $this->intDepth > 0 )? date( "Ymd", mktime( 0,0,0, date( "m" ), date( "d" ) - $this->intDepth, date( "Y" ) ) ) . ".gz": "";
+		$strFileKeep		= ( $this->flgMonthly )? date( "Ymt" ) . ".gz": "";
 		$strCmd			= "ssh -p {$this->getSSHPort()} -i {$this->getSSHKey(true)} {$this->getSSHUser()}@{$this->getSSHHost()} \"mysqldump -u{$this->strDBUser} -p'{$this->strDBPass}' -h{$this->strDBHost} -P{$this->intDBPort} {$this->strDBName} | gzip -c\" > {$this->getDst()}/{$strFileSave}" ;
 
 		if (
