@@ -87,7 +87,7 @@ class QKDBackUpperDriverMySQL extends QKDBackUpperDriverBase {
 				file_exists( "{$this->getDst()}/{$strFileDelete}" ) &&
 				$strFileDelete != $strFileKeep
 			) {
-				cmd( "rm -Rf {$this->getDst()}/{$strFileDelete}" );
+				$this->cmd( "rm -Rf {$this->getDst()}/{$strFileDelete}" );
 			}
 			return true;
 		}
